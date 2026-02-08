@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apology & Love Website - Page 3</title>
+<style>
+html, body { margin:0; padding:0; font-family:'Trebuchet MS','Segoe UI Emoji','Noto Color Emoji','Arial','Georgia',sans-serif; }
+body { display:flex; justify-content:center; align-items:center; min-height:100vh; background: linear-gradient(135deg, #89f7fe, #66a6ff); color:#722f37; text-align:center; flex-direction:column; padding:50px; }
+h1 { margin-bottom:20px; text-shadow:0 3px 8px rgba(0,0,0,0.25); }
+p { max-width:700px; line-height:1.8; font-size:1.2em; }
+.typing-text { margin-top:25px; font-size:2em; font-weight:bold; letter-spacing:2px; border-right:3px solid #fff; white-space:nowrap; overflow:hidden; cursor:default; }
+.love-heart { font-size: 1.5em; margin-top: 15px; }
+.forever-text { cursor:pointer; margin-top:20px; font-size:1.5em; color:pink; }
+.firework { position:fixed; bottom:0; font-size:1.8em; animation: explode 2s ease-out forwards; }
+@keyframes explode { 0% { transform:translateY(0) scale(0.5); opacity:1;} 100% { transform:translateY(-60vh) scale(2); opacity:0;} }
+</style>
+</head>
+<body>
+<audio id="bg-music" loop>
+    <source src="romantic.mp3" type="audio/mpeg">
+    <source src="romantic.ogg" type="audio/ogg">
+</audio>
+
+<h1>You Chose Us 👩‍❤️‍👨</h1>
+<p>
+    Thank you for forgiving me,<br>
+    Thank you for choosing love.<br><br>
+    I promise to hold your hand through every high and low,<br>
+    to protect your heart like it's my own,<br>
+    and to never stop choosing you… every single day 🫂<br><br>
+    You're not just my love — you're my home 🏡
+</p>
+<div class="typing-text" id="typing"></div>
+<div class="love-heart">❤️</div>
+<div class="forever-text" onclick="playMusic()">Forever starts here ✨</div>
+
+<script>
+// Fireworks
+function launchFireworks() {
+    const fireworks=["💋","💋","💋","💋"];
+    const fw=document.createElement("div");
+    fw.className="firework";
+    fw.innerHTML=fireworks[Math.floor(Math.random()*fireworks.length)];
+    fw.style.left=Math.random()*100+"vw";
+    document.body.appendChild(fw);
+    setTimeout(()=>fw.remove(),2000);
+}
+setInterval(()=>{ launchFireworks(); launchFireworks(); launchFireworks(); }, 400);
+
+// Typing animation
+const text = "I LOVE YOU ";
+let index = 0;
+const typingDiv = document.getElementById("typing");
+function typeText() {
+    if(index < text.length){
+        typingDiv.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeText,150);
+    }
+}
+window.onload = typeText;
+
+// Play music
+function playMusic() {
+    const music = document.getElementById("bg-music");
+    music.play().catch(()=>{});
+}
+</script>
+</body>
+</html>
